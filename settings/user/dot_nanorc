@@ -1,0 +1,19 @@
+include "~/.config/nano/nanorc.nanorc"
+include "~/.config/nano/python.nanorc"
+include "~/.config/nano/bash.nanorc"
+include "~/.config/nano/conf.nanorc"
+include "~/.config/nano/conky.nanorc"
+include "~/.config/nano/makefile.nanorc"
+include "~/.config/nano/mimetype.nanorc"
+include "~/.config/nano/sh.nanorc"
+include "~/.config/nano/urls.nanorc"
+include "~/.config/nano/xdefaults.nanorc"
+include "~/.config/nano/xml.nanorc"
+include "~/.config/nano/xorg.nanorc"
+
+set nohelp
+set smooth
+set nowrap
+set speller aspell
+set tabstospaces
+set tabsize 4

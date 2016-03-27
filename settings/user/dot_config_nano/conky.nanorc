@@ -1,0 +1,22 @@
+# ~/.conky.nanorc
+#
+# conky syntax highlighting
+
+syntax "conky" "conky.*rc$"
+
+color blue start="^.*" end="^TEXT$"
+color black,blue "^TEXT$"
+
+color blue start="\$\{" end="\}"
+color blue "\$[a-z_]+(\s|$|\\$)"
+color ,green "\}\s+(\$|\\$)"
+color yellow "(\$|\{|\})"
+
+color red "(\s(no|none)$|\s(top|middle|bottom)_(left|middle|right)$|goto|offset|voffset|align(l|c|r))"
+color cyan "(use_xft|xft(font|alpha)|font|[a-z_]+color|color[0-9]*)"
+color green "(\syes$|\$if[a-z_]+|\$endif|pre_exec|exec(i|p|pi)?|("|'|`)[^"'`]*("|'|`))"
+color magenta "(\s-*[0-9]+|(#|\s)[0-9A-F]{6}|\s[0-9]+(,|x)[0-9]+|\\$)"
+
+color brightblack "^#.*$"
+color ,green "\s+$"
+

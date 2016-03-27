@@ -1,0 +1,64 @@
+#
+# ~/.bashrc
+#
+
+[[ $- != *i* ]] && return
+
+#
+# Settings
+#
+
+export EDITOR=nano
+
+#
+# Alias
+#
+
+alias cat="pygmentize -O style=monokai -f console256 -g"
+alias ls="ls --color=auto -h -F --group-directories-first --time-style=+'%d-%m-%Y %H:%M'"
+alias grep="grep --color=auto"
+alias df="df -Tha --total"
+alias du="du -ach | sort -h"
+alias free="free -mt"
+alias ps="ps auxf"
+if [[ ${EUID} == 0 ]]; then
+   alias rm="rm -i";
+fi
+
+#
+# Define colors & symbols
+#
+
+RED="\\[$(tput setaf 1)\\]"
+GREEN="\\[$(tput setaf 2)\\]"
+YELLOW="\\[$(tput setaf 3)\\]"
+BLUE="\\[$(tput setaf 4)\\]"
+WHITE="\\[$(tput setaf 7)\\]"
+RESET="\\[$(tput sgr0)\\]"
+MSG_ERROR="\342\234\227"
+
+#
+# Define prompt
+#
+
+set_prompt () {
+   LAST_COMMAND=$?
+   PS1=""
+   if [[ $LAST_COMMAND != 0 ]]; then
+      PS1+="$RED$MSG_ERROR - Exit code $LAST_COMMAND\\n$RESET"
+   fi
+   if [[ ${EUID} == 0 ]]; then
+      PS1+="$RED";
+   else
+      PS1+="$GREEN";
+   fi
+   PS1+="\\u @ \\h $WHITE[$YELLOW\\w$WHITE]"
+   if [[ ${EUID} == 0 ]]; then
+      PS1+="$RED";
+   else
+      PS1+="$GREEN";
+   fi
+   PS1+=" \\$ $RESET"
+}
+
+PROMPT_COMMAND="set_prompt;echo -ne '\033]0;$PWD\007'"
